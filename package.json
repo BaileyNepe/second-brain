@@ -1,0 +1,27 @@
+{
+  "name": "second-brain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-install": "npm --prefix backend install && npm --prefix frontend install",
+    "dev-backend": "npm --prefix backend run dev",
+    "dev-frontend": "npm --prefix frontend start",
+    "start:dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaileyNepe/second-brain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaileyNepe/second-brain/issues"
+  },
+  "homepage": "https://github.com/BaileyNepe/second-brain#readme",
+  "devDependencies": {
+    "concurrently": "^6.3.0"
+  }
+}
