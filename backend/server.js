@@ -1,31 +1,53 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
 
-const Todo = require("./models/todoModel");
+dotenv.config();
+
+const Todo = require('./models/todoModel');
+
+connectDB();
 
 const appServer = express();
 appServer.use(cors());
+appServer.use(express.json());
 
-appServer.get("/", (req, res) => {
-  res.send("Api is running ...");
+appServer.get('/', (req, res) => {
+  res.send('Api is running ...');
 });
 
 // API Routes
 
-appServer.get("/api/todo", (req, res) => {
-  const todos = Todo.find();
+appServer.get('/api/todos', async (req, res) => {
+  const todos = await Todo.find();
   res.json(todos);
 });
 
-// TODO: Create get route to get todo items from database
+appServer.post('/api/todos', async (req, res) => {
+  try {
+    const todo = new Todo(req.body);
+    await todo.save();
+    res.status(201).json(todo);
+  } catch (err) {
+    res.status(500);
+    res.send(err);
+  }
+});
+
+appServer.delete('/api/todos', async (req, res) => {
+  try {
+    res.status(200).send('Not working yet');
+  } catch (error) {
+    res.status(500);
+  }
+});
 
 // TODO: Create a post route to add to item database
 
 // TODO: Create a update route to update item in database
 
 // TODO: Create a delete route to delete item in database
-
-// TODO: connect real database (mongoDB)
 
 // TODO: Separate routes, models, controllers into separate folders/files
 

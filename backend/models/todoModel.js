@@ -1,5 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
+const stepSchema = mongoose.Schema({
+  stepId: Number,
+  description: String,
+  isComplete: Boolean,
+});
 const todoSchema = mongoose.Schema(
   {
     title: { type: String, required: true },
@@ -12,13 +17,7 @@ const todoSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const stepSchema = mongoose.Schema({
-  stepId: Number,
-  description: String,
-  isComplete: Boolean,
-});
-
-const Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model('Todo', todoSchema);
 
 module.exports = Todo;
 
