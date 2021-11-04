@@ -35,6 +35,32 @@ const createTodo = async (req, res, next) => {
 };
 
 /**
+ * @desc Update a todo
+ * @route PUT /api/todos
+ * @access restricted
+ */
+
+const updateTodo = async (req, res, next) => {
+  try {
+    const updatedTodo = new Todo({
+      _id: req.params.id,
+      title: req.body.title,
+      description: req.body.description,
+      energyLevel: req.body.energyLevel,
+      steps: req.body.steps,
+      isDone: req.body.isDone,
+      dueDate: req.body.dueDate,
+    });
+    await Todo.updateOne({ _id: req.params.id }, updatedTodo);
+    res.status(201).json({
+      message: 'Todo updated successfully!',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * @desc Create a todo
  * @route POST /api/todos
  * @access restricted
@@ -49,4 +75,4 @@ const deleteAllTodos = async (req, res) => {
   }
 };
 
-module.exports = { getAllTodos, createTodo, deleteAllTodos };
+module.exports = { getAllTodos, createTodo, deleteAllTodos, updateTodo };
