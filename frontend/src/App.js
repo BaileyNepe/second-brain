@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import TodoScreen from "./screens/TodoScreen";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-function App() {
+import "./App.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/todo" element={<TodoScreen />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
+
+// TODO make grid for page
+// TODO add in nav bar into header
+// TODO hamburger menu for mobile screen with fun animations - slide in from side
+// Create homescreen - display list of todos and input and add
+// Create component for CRUD
