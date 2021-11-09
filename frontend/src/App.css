@@ -1,3 +1,28 @@
+:root {
+  --primary: blue;
+  --secondary: red;
+  --tertiary: #545564;
+  --background: #fffcf9;
+  --button: #b36f7a;
+  --button-hover: #c4919a;
+  --high: #b3001b;
+  --low: #0b5d15;
+  --med: #ee6123;
+  --text-light: white;
+}
+
+a {
+  color: var(--background);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .app {
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
@@ -5,16 +30,34 @@
 }
 
 .header {
+  color: var(--background);
   grid-area: header;
-  background-color: pink;
+  background-color: var(--tertiary);
 }
 
 .body {
   grid-area: body;
-  background-color: green;
+  background-color: var(--background);
 }
 
 .footer {
   grid-area: footer;
-  background-color: red;
+  background-color: var(--tertiary);
+  color: var(--background);
+}
+
+.button {
+  padding: 1rem 1.2rem;
+  border: 1px transparent;
+  color: white;
+  background-color: var(--button);
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
 }

@@ -1,28 +1,26 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import TodoScreen from "./screens/TodoScreen";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import TodoScreen from './screens/TodoScreen';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import "./App.css";
+import './App.css';
 
 const App = () => {
   return (
     <>
       <Router>
         <div className="app">
-        <Header />
-        <div className="body">
-        <Routes>
-
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/todo" element={<TodoScreen />} />
-        </Routes>
-        </div>
-        <Footer />
+          <Header />
+          <div className="body">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/todo" element={<TodoScreen />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
       </Router>
-      
     </>
   );
 };

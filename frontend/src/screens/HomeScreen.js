@@ -1,11 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
 const HomeScreen = () => {
+  const dummy = [
+    { title: 'hello', isComplete: false },
+    { title: 'test', isComplete: false },
+  ];
   return (
     <div>
-      Home screen
-      <Link to="/todo">Todo</Link>{" "}
+      <div>
+        {dummy.map((todoItem) => (
+          <div>
+            <div>{todoItem.title}</div>
+            <div></div>
+          </div>
+        ))}
+      </div>
+      <button className="button">+</button>
     </div>
   );
 };
