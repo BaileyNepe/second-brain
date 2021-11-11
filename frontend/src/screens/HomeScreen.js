@@ -2,19 +2,22 @@ import { useEffect, useState } from 'react';
 
 const HomeScreen = () => {
   const [todos, setTodos] = useState([]);
+
   const fetchTodos = async () => {
     try {
-      const todos = await fetch("http://localhost:5000/api/todos");
-      setTodos(todos);
+      const todoItems = await fetch(`${process.env.REACT_APP_API_URL}/todos`);
+      const jsonData = await todoItems.json();
+      setTodos(jsonData);
     } catch (e) {
       console.error('Database query failed');
       return null;
     }
   };
+
   useEffect(() => {
     fetchTodos();
   }, []);
-  console.log(todos)
+
   return (
     <div>
       <table>
@@ -26,11 +29,11 @@ const HomeScreen = () => {
           </tr>
         </thead>
         <tbody>
-          {todos.map((todoItem, index ) => (
-            <tr key={index}>
-              <td> edit</td>
+          {todos.map((todoItem) => (
+            <tr key={todoItem._id}>
+              <td>edit</td>
               <td>{todoItem.title}</td>
-              <td> description</td>
+              <td>{todoItem.description}</td>
             </tr>
           ))}
         </tbody>
