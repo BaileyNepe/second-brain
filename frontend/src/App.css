@@ -11,6 +11,11 @@
   --text-light: white;
 }
 
+body {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 a {
   color: var(--tertiary);
   text-decoration: none;
@@ -26,7 +31,7 @@ ul {
 .app {
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-areas: "header" "body" "footer";
+  grid-template-areas: 'header' 'body' 'footer';
 }
 
 .header {

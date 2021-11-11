@@ -43,8 +43,8 @@
 
   transform-origin: 4px 0px;
 
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
 
 .menuToggle span:first-child {
@@ -118,13 +118,4 @@
 .menuToggle input:checked ~ ul {
   transform: none;
   opacity: 1;
-}
-
-@media screen and (max-width: 768px) {
-  .menu {
-    transform: none;
-    opacity: 0;
-
-    transition: opacity 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  }
 }
