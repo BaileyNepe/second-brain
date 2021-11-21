@@ -75,4 +75,14 @@ const deleteAllTodos = async (req, res) => {
   }
 };
 
-module.exports = { getAllTodos, createTodo, deleteAllTodos, updateTodo };
+const deleteOneTodo = async (req, res) => {
+  try {
+    const todo = await Todo.findById(req.params.id);
+    await todo.remove()
+    res.status(200).send('Todo deleted');
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getAllTodos, createTodo, deleteAllTodos, updateTodo, deleteOneTodo };

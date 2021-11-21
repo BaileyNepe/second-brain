@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllTodos, createTodo, deleteAllTodos, updateTodo } = require('../controllers/todosController');
+const { getAllTodos, createTodo, deleteAllTodos, updateTodo, deleteOneTodo } = require('../controllers/todosController');
 //TODO do I need to require express
 
 // TODO: Create a update route to update item in database
@@ -12,6 +12,6 @@ const { getAllTodos, createTodo, deleteAllTodos, updateTodo } = require('../cont
  * @Path /api/todos
  */
 router.route('/').get(getAllTodos).post(createTodo).delete(deleteAllTodos);
-router.route('/:id').put(updateTodo).delete();
+router.route('/:id').put(updateTodo).delete(deleteOneTodo);
 
 module.exports = router;
