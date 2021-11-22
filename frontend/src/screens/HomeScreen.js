@@ -5,8 +5,9 @@ const HomeScreen = () => {
 
   const fetchTodos = async () => {
     try {
-      const todoItems = await fetch(`${process.env.REACT_APP_API_URL}/todos`);
+      const todoItems = await fetch(`${process.env.REACT_APP_API_URL}/api/todos`);
       const jsonData = await todoItems.json();
+
       setTodos(jsonData);
     } catch (e) {
       console.error('Database query failed');
@@ -16,14 +17,20 @@ const HomeScreen = () => {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [todos]);
+
+  const handleDelete = async (todo) => {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/todos/${todo}`, {
+      method: 'DELETE',
+    });
+  };
 
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th>Edit</th>
+            <th>Delete</th>
             <th>Todo</th>
             <th>Done</th>
           </tr>
@@ -31,7 +38,15 @@ const HomeScreen = () => {
         <tbody>
           {todos.map((todoItem) => (
             <tr key={todoItem._id}>
-              <td>edit</td>
+              <td>
+                <button
+                  onClick={() => {
+                    handleDelete(todoItem._id);
+                  }}
+                >
+                  -
+                </button>
+              </td>
               <td>{todoItem.title}</td>
               <td>{todoItem.description}</td>
             </tr>
