@@ -13,6 +13,7 @@ const Todo = require("../../models/todoModel");
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
+// fix database setup
 beforeAll(async () => {
   const mongoServer = await MongoMemoryServer.create();
   await database.connect(mongoServer.getUri());
