@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
-const todoRoutes = require("./routes/todoRoutes");
-const { errorHandler } = require("./middleware/errorHandler");
+const todoRoutes = require('./routes/todoRoutes');
+const { errorHandler } = require('./middleware/errorHandler');
 
 dotenv.config();
 
@@ -14,7 +14,7 @@ appServer.use(cors());
 appServer.use(express.json());
 
 // API Routes
-appServer.use("/api/todos", todoRoutes);
+appServer.use('/api/todos', todoRoutes);
 
 // ErrorHandler
 appServer.use(errorHandler);
