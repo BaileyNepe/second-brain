@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const HomeScreen = () => {
   const [todos, setTodos] = useState([]);
+  const { getAccessTokenSilently } = useAuth0;
 
   const fetchTodos = async () => {
     try {
-      const todoItems = await fetch(`${process.env.REACT_APP_API_URL}/api/todos`);
+      const token = await getAccessTokenSilently();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const todoItems = await fetch(`${process.env.REACT_APP_API_URL}/api/todos`, config);
       const jsonData = await todoItems.json();
 
       setTodos(jsonData);
