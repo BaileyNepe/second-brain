@@ -5,6 +5,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
       <Router>
         <div className="app">
           <Header />
-          <div className="body">
+          <div className="body container">
             <Routes>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/todo" element={<TodoScreen />} />

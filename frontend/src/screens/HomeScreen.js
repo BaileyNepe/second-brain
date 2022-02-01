@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import Todo from '../components/Todo';
 
 const HomeScreen = () => {
   const [todos, setTodos] = useState([]);
@@ -48,17 +49,7 @@ const HomeScreen = () => {
         <tbody>
           {todos.map((todoItem) => (
             <tr key={todoItem._id}>
-              <td>
-                <button
-                  onClick={() => {
-                    handleDelete(todoItem._id);
-                  }}
-                >
-                  -
-                </button>
-              </td>
-              <td>{todoItem.title}</td>
-              <td>{todoItem.description}</td>
+              <Todo todoItem={todoItem} handleDelete={handleDelete} />
             </tr>
           ))}
         </tbody>
