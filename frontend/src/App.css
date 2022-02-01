@@ -3,7 +3,7 @@
   --secondary: red;
   --tertiary: #545564;
   --background: #fffcf9;
-  --button: #b36f7a;
+  --button: #fffcf9;
   --button-hover: #c4919a;
   --high: #b3001b;
   --low: #0b5d15;
@@ -31,7 +31,7 @@ ul {
 .app {
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-areas: 'header' 'body' 'footer';
+  grid-template-areas: "header" "body" "footer";
 }
 
 .header {
@@ -54,15 +54,18 @@ ul {
 .button {
   padding: 1rem 1.2rem;
   border: 1px transparent;
-  color: white;
+  color: var(--tertiary);
   background-color: var(--button);
-  border-radius: 1rem;
+  border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-weight: bold;
+  font-size: 1.5rem;
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--button-hover);
+  background-color: var(--low);
+  opacity: 80%;
+  color: var(--button);
 }
